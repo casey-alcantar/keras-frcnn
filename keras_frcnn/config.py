@@ -1,13 +1,31 @@
 from keras import backend as K
 import math
 
+"""
+#For Keras - allow_growth
+from keras.callbacks import ModelCheckpoint
+from keras.models import Model, load_model, save_model, Sequential
+from keras.layers import Dense, Activation, Dropout, Input, Masking, TimeDistributed, LSTM, Conv1D
+from keras.layers import GRU, Bidirectional, BatchNormalization, Reshape
+from keras.optimizers import Adam
+from keras.backend.tensorflow_backend import set_session
+import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+config.log_device_placement = True  # to log device placement (on which device the operation ran)
+sess = tf.Session(config=config)
+set_session(sess)  # set this TensorFlow session as the default session for Keras
+""" 
+
+
+
 class Config:
 
 	def __init__(self):
 
 		self.verbose = True
 
-		self.network = 'resnet50'
+		self.network = 'vgg' # was  'resnet50'
 
 		# setting for data augmentation
 		self.use_horizontal_flips = False
@@ -15,23 +33,23 @@ class Config:
 		self.rot_90 = False
 
 		# anchor box scales
-		self.anchor_box_scales = [128, 256, 512]
+		self.anchor_box_scales = [32, 64, 128]   # was [128, 256, 512], worked for  [32, 64, 128], maybe smaller?
 
 		# anchor box ratios
 		self.anchor_box_ratios = [[1, 1], [1./math.sqrt(2), 2./math.sqrt(2)], [2./math.sqrt(2), 1./math.sqrt(2)]]
 
 		# size to resize the smallest side of the image
-		self.im_size = 600
+		self.im_size = 240 # was 600
 
 		# image channel-wise mean to subtract
 		self.img_channel_mean = [103.939, 116.779, 123.68]
 		self.img_scaling_factor = 1.0
 
 		# number of ROIs at once
-		self.num_rois = 4
+		self.num_rois = 4 # was 4
 
 		# stride at the RPN (this depends on the network configuration)
-		self.rpn_stride = 16
+		self.rpn_stride = 4 # was 16
 
 		self.balanced_classes = False
 
@@ -56,3 +74,4 @@ class Config:
 		# https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5
 
 		self.model_path = 'model_frcnn.vgg.hdf5'
+		print("using vgg model weights")

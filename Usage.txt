@@ -1,0 +1,11 @@
+python train_frcnn.py -o simple -p images/train/train_labels.txt
+
+try my weights?
+python train_frcnn.py -o simple -p images/train/train_labels.txt --input_weight_path Classification_model.h5
+python train_frcnn.py -o simple -p images/train/train_labels.txt --input_weight_path model_frcnn.vgg.hdf5
+
+python train_frcnn.py -o simple -p images/train/train_labels.txt --network vgg --input_weight_path model_frcnn.vgg.h5
+
+
+inference
+python test_frcnn.py -p /images/test/

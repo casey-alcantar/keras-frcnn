@@ -3,3 +3,21 @@ Keras==2.0.3
 numpy
 opencv-python
 sklearn
+
+
+pip install h5py
+pip install Keras==2.0.3
+pip install numpy
+pip install opencv-python
+pip install sklearn
+
+which tensorflow?
+pip install tensorflow-gpu==1.15
+ from tensorflow.python.compiler.tensorrt import trt_convert as trt
+
+pip install tensorflow==2.0 --ignore-installed
+
+.\venv\Scripts\activate
+
+
+cd Documents/Github/keras-frcnn
